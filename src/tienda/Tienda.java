@@ -40,6 +40,7 @@ public class Tienda {
              case 7:
                  break;
              case 8:
+                 hello
                  break;
          }
         
