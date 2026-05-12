@@ -7,11 +7,11 @@ public class catalogotienda {
     
      //*lista linkedhashset para que los imprima en orden y saber
      //*lo que esta agregado en el inventario
-     public static Set<productos> prod = new LinkedHashSet<>();
+    public static Set<productos> prod = new LinkedHashSet<>();
      static {
-      prod.add(new productos(1, "Manzana",10,2));
-      prod.add(new productos(2, "Queso",25,1));
-      prod.add(new productos(3, "Soda",18,4));
+      prod.add(new productos(1, "Manzana",10,2,productos.Categoria.ALIMENTOS));
+      prod.add(new productos(2, "Queso",25,1,productos.Categoria.ALIMENTOS));
+      prod.add(new productos(3, "Soda",18,4,productos.Categoria.ALIMENTOS));
      }
 
     public static void main(String[] args) {
@@ -135,8 +135,28 @@ public class catalogotienda {
                       System.out.println("Solo se permiten numeros: ");
                  }
                   }while(letratres);
+                  
+                  
+                  //* basado para usar enum, solo permitira esas 4 opciones de categorias
+                    boolean numm = false;
+                      productos.Categoria categoria = null;
+                  
+                      //*AQUI ME QUEDE AQUI AQUI
+                  do {
+                      numm = false;
+                      System.out.println("Ingrese la categoria (Hogar, Tecnologia,Limpieza, Alimentos): ");
+                       String cat = P.nextLine().toUpperCase();
+                        
+                          try {
+                          categoria = productos.Categoria.valueOf(cat);
+                          } catch (IllegalArgumentException e) {
+                           numm = true;
+                           System.out.println("Categoria invalida. Intente de nuevo.");
+                            }
+
+                   }while(numm);
         
-                  productos nuevo =  new productos(id,producto,precio,cantidad);
+                  productos nuevo =  new productos(id,producto,precio,cantidad,categoria);
                   //*ordena los datos
         
                   c.prod.add(nuevo);//* para que se agregue a la lista
