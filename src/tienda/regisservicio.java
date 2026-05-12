@@ -6,3 +6,6 @@ public class regisservicio {
     }
  
 }
+//*cada que se haga un cambio y lo guardemos con ctrl + s
+//* se va a subrayar de color la clase 
+//*para guardar primero arriba a team luego commit
