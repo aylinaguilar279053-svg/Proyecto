@@ -1,8 +1,6 @@
-//*5
 package tienda;
-public class regisservicio {
+public class eliminarservicio extends regisservicio {
     public static void main(String[] args) {
-
+        
     }
- 
 }
