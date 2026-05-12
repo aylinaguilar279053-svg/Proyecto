@@ -5,12 +5,18 @@ public int id;
 private String producto;
 private double precio;
 private int cantidad;
+private Categoria categoria;
 
-    public productos(int id, String producto, double precio, int cantidad) {
+public enum Categoria {
+    HOGAR, TECNOLOGIA, LIMPIEZA, ALIMENTOS
+}
+
+    public productos(int id, String producto, double precio, int cantidad, Categoria categoria) {
         this.id = id;
         this.producto = producto;
         this.precio = precio;
         this.cantidad = cantidad;
+        this.categoria = categoria;
     }
 
     public int getId() {
@@ -45,13 +51,22 @@ private int cantidad;
         this.cantidad = cantidad;
     }
 
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
+
     @Override
     public int hashCode() {
         int hash = 3;
-        hash = 41 * hash + this.id;
-        hash = 41 * hash + Objects.hashCode(this.producto);
-        hash = 41 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
-        hash = 41 * hash + this.cantidad;
+        hash = 53 * hash + this.id;
+        hash = 53 * hash + Objects.hashCode(this.producto);
+        hash = 53 * hash + (int) (Double.doubleToLongBits(this.precio) ^ (Double.doubleToLongBits(this.precio) >>> 32));
+        hash = 53 * hash + this.cantidad;
+        hash = 53 * hash + Objects.hashCode(this.categoria);
         return hash;
     }
 
@@ -76,14 +91,15 @@ private int cantidad;
         if (this.cantidad != other.cantidad) {
             return false;
         }
-        return Objects.equals(this.producto, other.producto);
+        if (!Objects.equals(this.producto, other.producto)) {
+            return false;
+        }
+        return this.categoria == other.categoria;
     }
 
     @Override
     public String toString() {
-        return "productos:" + "id: " + id + " producto: " + producto + " precio: " + precio + " cantidad: " + cantidad;
+        return "";
     }
 
 }
-     
-
