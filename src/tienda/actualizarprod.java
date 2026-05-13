@@ -87,6 +87,7 @@ public class actualizarprod extends catalogotienda{
             }catch(EntradaInvalidaExcepcion e){
                 System.out.println(e.getMessage());
             }
+        }while(num);
          
          //*SI FUNCIONA EL SWITCH
          
@@ -114,7 +115,13 @@ public class actualizarprod extends catalogotienda{
                         texto = false;
                         nuevoid =  Integer.parseInt(nuevoidd);
                         
-                        
+                    }else{
+                       throw new EntradaInvalidaExcepcion("Solo numeros");
+                    }
+                     }catch(EntradaInvalidaExcepcion e){
+                         System.out.println(e.getMessage());
+                     }
+                     
                          //*recorrer la lista para ver que no se repita el id
                         for(productos p: prod){
                             if(p.getId() == nuevoid){
@@ -131,13 +138,7 @@ public class actualizarprod extends catalogotienda{
                         }
                        
                    //*cuidar que sollo ingrese numeros, este else es parte de ese if
-                    }else{
-                       throw new EntradaInvalidaExcepcion("Solo numeros");
-                    }
-                     }catch(EntradaInvalidaExcepcion e){
-                         System.out.println(e.getMessage());
-                     }
-  
+                   
                  }while(texto || igual);     
                  break;
                   //*HASTA AQUI FUNCIONA BIEN SI ACTUALIZA EL ID          
@@ -157,12 +158,14 @@ public class actualizarprod extends catalogotienda{
              case 6:
                  System.out.println("Saliendo....");
                  break;
-         }
-    }while(num);
+                 
+                 
+         }while(opcion !=6);
+    }
         //*hasta aqui FUNCIONA. NO MOVER ARRIBA
         
     }
-}
+
                
           
 
