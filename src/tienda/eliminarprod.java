@@ -20,8 +20,7 @@ public class eliminarprod extends catalogotienda  {
                }
       
               id = Integer.parseInt(id_eliminar);//* convierte a numero por que inicialmente esta como cadena de texto
-              eliminar = true;
-              System.out.println("Producto eliminado correctamente");
+              eliminar = false;
              
               }catch(EntradaInvalidaExcepcion e){
               System.out.println(e.getMessage());
@@ -40,6 +39,8 @@ public class eliminarprod extends catalogotienda  {
              System.out.println("ERROR. no se encontro el producto");
              System.out.println("Intente nuevamente..."); 
          }
+         
+         
          
          
          
