@@ -17,6 +17,7 @@ public class actualizarprod extends catalogotienda{
         //*do y while repite hasta que el usuario ingrese solo numeros
   
         do{
+            try{
         System.out.println("ingrese el id del producto que desea actualizar: ");
         String idd = act.nextLine();
         
@@ -25,6 +26,14 @@ public class actualizarprod extends catalogotienda{
             id = Integer.parseInt(idd); 
             
             encontrar = false;
+            
+           }else{
+            throw new EntradaInvalidaExcepcion("Solo numeros");
+              }
+        
+            }catch(EntradaInvalidaExcepcion e){
+                System.out.println(e.getMessage());
+            }
             
          for(productos c: prod){
             
@@ -44,11 +53,6 @@ public class actualizarprod extends catalogotienda{
         
          //* es de la comprobacion para ver si es o no un numero lo que
          //* ingresado el usuario
-          }else{
-            letra = true;
-            System.out.println("solo se permiten numeros: ");
-            System.out.println(" ");
-        }
         
         }while(letra || !encontrar);      
         
@@ -57,6 +61,7 @@ public class actualizarprod extends catalogotienda{
         boolean num =  false;
         
         do{
+            try{
          System.out.println("¿Que desea actualizar?");
          System.out.println("1. ID");
          System.out.println("2. Producto (Nombre)");
@@ -75,13 +80,13 @@ public class actualizarprod extends catalogotienda{
                  System.out.println("no existe esa opcion, solo 1, 2, 3, 4, 5");
                  System.out.println("intente nuevamente...");
              }
+         }else{
+             throw new EntradaInvalidaExcepcion("Solo numeros");
          }
          
-         else{
-             num = true;
-              System.out.println("Solo se permiten numeros");
-         }
-         
+            }catch(EntradaInvalidaExcepcion e){
+                System.out.println(e.getMessage());
+            }
          
          //*SI FUNCIONA EL SWITCH
          
@@ -100,6 +105,7 @@ public class actualizarprod extends catalogotienda{
                  boolean igual = false;
                               
                  do{
+                     try{
                     System.out.println("ingrese el nuevo id: ");
                     String nuevoidd = act.nextLine();
                     
@@ -107,6 +113,7 @@ public class actualizarprod extends catalogotienda{
                     if(nuevoidd.matches("[0-9]+")){
                         texto = false;
                         nuevoid =  Integer.parseInt(nuevoidd);
+                        
                         
                          //*recorrer la lista para ver que no se repita el id
                         for(productos p: prod){
@@ -125,9 +132,11 @@ public class actualizarprod extends catalogotienda{
                        
                    //*cuidar que sollo ingrese numeros, este else es parte de ese if
                     }else{
-                        texto = true;
-                        System.out.println("solo se permiten numeros");   
+                       throw new EntradaInvalidaExcepcion("Solo numeros");
                     }
+                     }catch(EntradaInvalidaExcepcion e){
+                         System.out.println(e.getMessage());
+                     }
   
                  }while(texto || igual);     
                  break;
