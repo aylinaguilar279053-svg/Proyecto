@@ -133,10 +133,9 @@ public class actualizarprod extends catalogotienda{
                  break;
                   //*HASTA AQUI FUNCIONA BIEN SI ACTUALIZA EL ID          
                  
-                 
-                 
-                 
+          
              case 2:
+                 
                  break;
              case 3:
                  break;
