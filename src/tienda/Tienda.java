@@ -2,7 +2,7 @@ package tienda;
 import java.util.Scanner;
 public class Tienda {
     public static void main(String[] args) {
-       
+       //*
         Scanner num = new Scanner(System.in);
         int opcion = 0;
         boolean texto = false;
