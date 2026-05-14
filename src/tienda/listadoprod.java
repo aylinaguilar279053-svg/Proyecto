@@ -16,5 +16,5 @@ public class listadoprod extends catalogotienda{
         mostrarinventario();
     }
     }
-   
+   //*
 
