@@ -197,6 +197,6 @@ public class catalogotienda {
                 System.out.println("Opcion invalida");              
         }
         
-        }while(opcion != 3); //*sale y vuelve al menu principal
+        }while(opcion != 3); //*sale y vuelve al menu principal  
     }     
 }
