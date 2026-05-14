@@ -170,9 +170,60 @@ public class actualizarprod extends catalogotienda{
                  //*HASTA ACTUALIZAR PRODUCTO FUNCIONA SIN NINGUN ERROR
                  
              case 3:
+                   System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                   System.out.println("ACTUALIZAR PRECIO DEL PRODUCTO");
+                   
+                 boolean textoprecio = false;
+                 double nuevoprecio = 0;
+                              
+                 do{
+                    System.out.println("ingrese el nuevo precio: ");
+                    String nuevoprecioo = act.nextLine();
+                    
+                    //*cuidar que sollo ingrese numeros
+                    if(nuevoprecioo.matches("[0-9]+")){
+                        textoprecio = false;
+                        nuevoprecio =  Double.parseDouble(nuevoprecioo);
+                        encontradoProd.setPrecio(nuevoprecio);
+                        System.out.println("Precio actualizado correctamente");   
+                        
+                    }else{
+                        textoprecio = true;
+                        System.out.println("solo se permiten numeros");   
+                    }
+  
+                 }while(textoprecio);     
                  break;
+                 //*HASTA AQUII FUNCIONA AHORA. 
+                
              case 4:
+                    System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                   System.out.println("ACTUALIZAR PRECIO DEL PRODUCTO");
+                   
+                 boolean textocan = false;
+                 int nuevocan = 0;
+                              
+                 do{
+                    System.out.println("ingrese el nueva cantidad de producto: ");
+                    String nuevocann = act.nextLine();
+                    
+                    //*cuidar que sollo ingrese numeros
+                    if(nuevocann.matches("[0-9]+")){
+                        textocan = false;
+                        nuevocan =  Integer.parseInt(nuevocann);
+                        encontradoProd.setCantidad(nuevocan);
+                            System.out.println("Cantidad actualizada correctamente");   
+                        
+                    }else{
+                        textoprecio = true;
+                        System.out.println("solo se permiten numeros");   
+                    }
+  
+                 }while(textocan);     
                  break;
+                
              case 5:
                  break;
                  
