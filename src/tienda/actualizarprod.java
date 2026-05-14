@@ -118,7 +118,8 @@ public class actualizarprod extends catalogotienda{
                         }
                         
                         if (igual){
-                         System.out.println("No puedes utilizar el mismo id");   
+                         System.out.println("No puedes utilizar el mismo id");  
+                         break;
                         }else{
                              igual = false;
                              encontradoProd.setId(nuevoid);
