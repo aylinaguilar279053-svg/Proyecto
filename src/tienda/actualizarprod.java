@@ -132,12 +132,43 @@ public class actualizarprod extends catalogotienda{
                  }while(texto || igual);     
                  break;
                   //*HASTA AQUI FUNCIONA BIEN SI ACTUALIZA EL ID          
-                 
-                 
-                 
+
                  
              case 2:
+                  System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                   System.out.println("ACTUALIZAR NOMBRE DEL PRODUCTO");
+                   
+                   boolean numero = false;
+                   String producto = null;
+                   boolean igualdos = false;
+                   
+                   do{
+                       System.out.println("Ingrese el nuevo nombre: ");
+                        producto = act.nextLine();
+                       
+                       if(producto.matches("[0-9]+")){
+                             numero = true;
+                             System.out.println("no se permiten numeros solo texto");  
+                             break;
+                       }
+                         for(productos p: prod){
+                               if(p.getProducto().equals(producto)){
+                                   igualdos = true;  
+                               }
+                           }
+                         if(igualdos){
+                             System.out.println("Ese nombre ya esta en uso");   
+                                    }else{
+                             igualdos = false;
+                             encontradoProd.setProducto(producto);
+                             System.out.println("Nombre actualizado correctamente");   
+                        }
+                       
+                   }while(numero || igualdos); 
                  break;
+                 //*HASTA ACTUALIZAR PRODUCTO FUNCIONA SIN NINGUN ERROR
+                 
              case 3:
                  break;
              case 4:
