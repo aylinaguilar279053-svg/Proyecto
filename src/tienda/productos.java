@@ -102,4 +102,4 @@ public enum Categoria {
         return "";
     }
 
-}
+}//*apoyo
