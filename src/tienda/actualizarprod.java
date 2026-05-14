@@ -1,6 +1,7 @@
 package tienda;
 import java.util.Scanner;
 import static tienda.catalogotienda.prod;
+import static tienda.productos.Categoria.HOGAR;
 public class actualizarprod extends catalogotienda{
     public static void main(String[] args) {
         
@@ -225,6 +226,60 @@ public class actualizarprod extends catalogotienda{
                  break;
                 
              case 5:
+                 
+                 
+                 int opciondos = 0;
+                 boolean letrapp = false;
+                  System.out.println("AcTUALIZAR CATEGORIAS"); 
+                  System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                  
+                 do{
+                        System.out.println("OPCIONES DE CATEGORIAS"); 
+                        System.out.println("1.HOGAR"); 
+                        System.out.println("2.LIMPIEZA"); 
+                        System.out.println("3.ALIMENTOS"); 
+                        System.out.println("4.TECNOLOGIA"); 
+                        System.out.println("5.SALIR AL MENU PRINCIPAL..."); 
+                        
+                       String escoger = act.nextLine();
+                       
+                       if(escoger.matches("[0-9]+")){
+                           letrapp = false;
+                           opciondos = Integer.parseInt(escoger);
+                            if(opciondos > 5 || opciondos <1){
+                             System.out.println("ese numero no esta entre las opciones"); 
+                             break;
+                         }
+                         
+                           }else{
+                            letrapp = true;
+                            System.out.println("SOLO SE PERMITEN NUMEROS");   
+                       }
+                     }while(letrapp);
+                 
+                 switch(opciondos){
+                     case 1:
+                         encontradoProd.setCategoria(productos.Categoria.HOGAR);
+                         System.out.println("Categoria actualizada correctamente");   
+                         break;
+                     case 2:
+                         encontradoProd.setCategoria(productos.Categoria.LIMPIEZA);
+                         System.out.println("Categoria actualizada correctamente");  
+                         break;
+                     case 3:
+                         encontradoProd.setCategoria(productos.Categoria.ALIMENTOS);
+                         System.out.println("Categoria actualizada correctamente");  
+                         break;
+                     case 4:
+                         encontradoProd.setCategoria(productos.Categoria.TECNOLOGIA);
+                         System.out.println("Categoria actualizada correctamente");  
+                         break;
+                     case 5:
+                         System.out.println("Saliendo....");
+                         break;
+                         
+                 }
                  break;
                  
             //*SI FUNCIONA EL CASE 6
