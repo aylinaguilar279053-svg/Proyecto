@@ -25,6 +25,10 @@ public class regisservicio {
     }
     public static void main(String[] args) {
       Scanner leer = new Scanner(System.in);
+      
+        int opcion = 0;
+        boolean letra = false;
+      do{
         System.out.println("\n--- LISTA DE SERVICIOS DISPONIBLES ---");
         System.out.println("1. Reabastecimiento de productos");
         System.out.println("2. Registro de caducidad y merma");
@@ -34,12 +38,23 @@ public class regisservicio {
         System.out.println("0. Salir");
 
         System.out.print("\nElige el numero del servicio que quieres: ");
-        int opcion = leer.nextInt();
+        String opcionn = leer.nextLine();
         leer.nextLine(); // Limpiar el buffer
-
-        if (opcion < 1) return;
-
-        switch (opcion) {
+        
+        //*Para q  no truene al intentar poner letras
+        
+        if(opcionn.matches("[0-9]+")){    
+            letra = false;
+          opcion = Integer.parseInt(opcionn);
+          
+        }else{
+            letra = true;
+            System.out.println("Solo se permiten numeros");
+            System.out.println("Intente nuevamente");
+        }
+      }while(letra);
+      
+            switch (opcion) {
             case 1: rab(); break;
             case 2: merma(); break;
             case 3: limpieza(); break;
@@ -56,7 +71,7 @@ public class regisservicio {
     System.out.print("Ingrese el id del producto: ");
     String prod_id = leer.nextLine();
     productos p = buscarProductoEnCatalogo(prod_id);
-
+    
     if (p == null) {
         System.out.println("no existe el producto");
         return;
