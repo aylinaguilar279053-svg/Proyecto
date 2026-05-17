@@ -38,8 +38,10 @@ public class Tienda {
              case 6:
                  break;
              case 7:
+                 mostrarlistadeservicios.mostrarListadoServicios();
                  break;
              case 8:
+                 Materialesdisponibles.mostrarMaterialesDisponibles();
                  break;
          }
         
