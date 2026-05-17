@@ -7,17 +7,25 @@ public class eliminarprod extends catalogotienda  {
       Scanner E = new Scanner(System.in);
         
          boolean eliminar = false;
-         
-         do{
+         int id = 0;
+       do{
+         try{
          System.out.println("Ingrese el id del producto que desea eliminar: ");
          String id_eliminar = E.nextLine();
          
-           if (id_eliminar.matches("[0-9]+")) //* solo se permite numeros
-           {
-               
-           int id = Integer.parseInt(id_eliminar);//* convierte a numero por que inicialmente esta como cadena de texto
-           eliminar = false;
-
+           if (!id_eliminar.matches("[0-9]+")) //* solo se permite numeros
+              {
+               throw new EntradaInvalidaExcepcion("Solo numeros");
+      
+               }
+      
+              id = Integer.parseInt(id_eliminar);//* convierte a numero por que inicialmente esta como cadena de texto
+              eliminar = false;
+             
+              }catch(EntradaInvalidaExcepcion e){
+              System.out.println(e.getMessage());
+              }
+           
          for(productos p: prod){ //* busca en la lista principal de la otra clase la linkedhashset
              if(p.getId()== id){
                  prod.remove(p);
@@ -32,15 +40,14 @@ public class eliminarprod extends catalogotienda  {
              System.out.println("Intente nuevamente..."); 
          }
          
-         }else{ //*si ingresa letras o algo mas en vez de nuemros
-             System.out.println("ERROR. solo se permiten numeros");
-             System.out.println("Intente nuevamente..."); 
-             eliminar = false;
-           }
          
-         }while(!eliminar);//* si no lo encuentra sigue el ciclo
+         
+         
+         
+         
                
-    }
+    }while(!eliminar);//* si no lo encuentra sigue el ciclo
+}
 }
 
 

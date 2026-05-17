@@ -1,6 +1,7 @@
 package tienda;
 import java.util.Scanner;
 import static tienda.catalogotienda.prod;
+import static tienda.productos.Categoria.HOGAR;
 public class actualizarprod extends catalogotienda{
     public static void main(String[] args) {
         
@@ -117,8 +118,10 @@ public class actualizarprod extends catalogotienda{
                         }
                         
                         if (igual){
-                         System.out.println("No puedes utilizar el mismo id");   
+                         System.out.println("No puedes utilizar el mismo id");  
+                         break;
                         }else{
+                             igual = false;
                              encontradoProd.setId(nuevoid);
                              System.out.println("ID actualizado correctamente");   
                         }
@@ -132,17 +135,153 @@ public class actualizarprod extends catalogotienda{
                  }while(texto || igual);     
                  break;
                   //*HASTA AQUI FUNCIONA BIEN SI ACTUALIZA EL ID          
-                 
-                 
-                 
+
                  
              case 2:
+                  System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                   System.out.println("ACTUALIZAR NOMBRE DEL PRODUCTO");
+                   
+                   boolean numero = false;
+                   String producto = null;
+                   boolean igualdos = false;
+                   
+                   do{
+                       System.out.println("Ingrese el nuevo nombre: ");
+                        producto = act.nextLine();
+                       
+                       if(producto.matches("[0-9]+")){
+                             numero = true;
+                             System.out.println("no se permiten numeros solo texto");  
+                             break;
+                       }
+                         for(productos p: prod){
+                               if(p.getProducto().equals(producto)){
+                                   igualdos = true;  
+                               }
+                           }
+                         if(igualdos){
+                             System.out.println("Ese nombre ya esta en uso");   
+                                    }else{
+                             igualdos = false;
+                             encontradoProd.setProducto(producto);
+                             System.out.println("Nombre actualizado correctamente");   
+                        }
+                       
+                   }while(numero || igualdos); 
                  break;
+                 //*HASTA ACTUALIZAR PRODUCTO FUNCIONA SIN NINGUN ERROR
+                 
              case 3:
+                   System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                   System.out.println("ACTUALIZAR PRECIO DEL PRODUCTO");
+                   
+                 boolean textoprecio = false;
+                 double nuevoprecio = 0;
+                              
+                 do{
+                    System.out.println("ingrese el nuevo precio: ");
+                    String nuevoprecioo = act.nextLine();
+                    
+                    //*cuidar que sollo ingrese numeros
+                    if(nuevoprecioo.matches("[0-9]+")){
+                        textoprecio = false;
+                        nuevoprecio =  Double.parseDouble(nuevoprecioo);
+                        encontradoProd.setPrecio(nuevoprecio);
+                        System.out.println("Precio actualizado correctamente");   
+                        
+                    }else{
+                        textoprecio = true;
+                        System.out.println("solo se permiten numeros");   
+                    }
+  
+                 }while(textoprecio);     
                  break;
+                 //*HASTA AQUII FUNCIONA AHORA. 
+                
              case 4:
+                    System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                   System.out.println("ACTUALIZAR PRECIO DEL PRODUCTO");
+                   
+                 boolean textocan = false;
+                 int nuevocan = 0;
+                              
+                 do{
+                    System.out.println("ingrese el nueva cantidad de producto: ");
+                    String nuevocann = act.nextLine();
+                    
+                    //*cuidar que sollo ingrese numeros
+                    if(nuevocann.matches("[0-9]+")){
+                        textocan = false;
+                        nuevocan =  Integer.parseInt(nuevocann);
+                        encontradoProd.setCantidad(nuevocan);
+                            System.out.println("Cantidad actualizada correctamente");   
+                        
+                    }else{
+                        textoprecio = true;
+                        System.out.println("solo se permiten numeros");   
+                    }
+  
+                 }while(textocan);     
                  break;
+                
              case 5:
+                 
+                 
+                 int opciondos = 0;
+                 boolean letrapp = false;
+                  System.out.println("AcTUALIZAR CATEGORIAS"); 
+                  System.out.println("ID ACTUAL: "+encontradoProd.getId()+" PRODUCTO: "+encontradoProd.getProducto()+" PRECIO:  "+encontradoProd.getPrecio()+" CANTIDAD: "+encontradoProd.getCantidad() +" CATEGORIA: "+encontradoProd.getCategoria());
+                 
+                  
+                 do{
+                        System.out.println("OPCIONES DE CATEGORIAS"); 
+                        System.out.println("1.HOGAR"); 
+                        System.out.println("2.LIMPIEZA"); 
+                        System.out.println("3.ALIMENTOS"); 
+                        System.out.println("4.TECNOLOGIA"); 
+                        System.out.println("5.SALIR AL MENU PRINCIPAL..."); 
+                        
+                       String escoger = act.nextLine();
+                       
+                       if(escoger.matches("[0-9]+")){
+                           letrapp = false;
+                           opciondos = Integer.parseInt(escoger);
+                            if(opciondos > 5 || opciondos <1){
+                             System.out.println("ese numero no esta entre las opciones"); 
+                             break;
+                         }
+                         
+                           }else{
+                            letrapp = true;
+                            System.out.println("SOLO SE PERMITEN NUMEROS");   
+                       }
+                     }while(letrapp);
+                 
+                 switch(opciondos){
+                     case 1:
+                         encontradoProd.setCategoria(productos.Categoria.HOGAR);
+                         System.out.println("Categoria actualizada correctamente");   
+                         break;
+                     case 2:
+                         encontradoProd.setCategoria(productos.Categoria.LIMPIEZA);
+                         System.out.println("Categoria actualizada correctamente");  
+                         break;
+                     case 3:
+                         encontradoProd.setCategoria(productos.Categoria.ALIMENTOS);
+                         System.out.println("Categoria actualizada correctamente");  
+                         break;
+                     case 4:
+                         encontradoProd.setCategoria(productos.Categoria.TECNOLOGIA);
+                         System.out.println("Categoria actualizada correctamente");  
+                         break;
+                     case 5:
+                         System.out.println("Saliendo....");
+                         break;
+                         
+                 }
                  break;
                  
             //*SI FUNCIONA EL CASE 6
@@ -150,7 +289,7 @@ public class actualizarprod extends catalogotienda{
                  System.out.println("Saliendo....");
                  break;
          }
-    }while(num);
+    }while(opcion !=6);
         //*hasta aqui FUNCIONA. NO MOVER ARRIBA
         
     }

@@ -25,9 +25,10 @@ public class catalogotienda {
   
         //*ciclo do y while para que se repita en caso de que no sea
         //*la respuesta que se espera
-        boolean siletra;
+        boolean siletra = false;
     do{
         do{
+            try{
         System.out.println("opciones");
         System.out.println("1.Agregar producto ");
         System.out.println("2.ver inventario");
@@ -38,19 +39,23 @@ public class catalogotienda {
         
         
         if(opcionn.matches("[0-9]+")){
-          siletra = false;  
+         siletra = false;  
          opcion = Integer.parseInt(opcionn);
-             if(opcion >3){
+         
+          if(opcion >3){
              System.out.println("no existe esa opcion, solo 1, 2 o 3");
              System.out.println("intente nuevamente");
          }
-         
         }else{
-            siletra = true;  
-            System.out.println("Solo se permiten numeros");
-        }
+            throw new EntradaInvalidaExcepcion("Solo se permiten numeros");
+        }  
+            }catch(EntradaInvalidaExcepcion e ){
+               System.out.println(e.getMessage()); 
+               
+            }
+
         }while(siletra);
-        
+        //*HASTA AQUI BIEN
         
         switch(opcion){
           
@@ -61,20 +66,24 @@ public class catalogotienda {
                 boolean letra;
                 do {//* en caso de que si este con este do y while va a preguntar
                     //* el id una y otra vez hasta que no coincida con uno que ya este
-                    //*en la lista
+                  
+               //*en la lista
                 existe = false;
                 letra = false;
                 System.out.println("Ingrese ID: ");
                  String idd = P.nextLine();
-                 
+                  try{
                  if(idd.matches("[0-9]+")) {
                      id = Integer.parseInt(idd);
                      letra = false;
+                     
                  }else{
-                      letra = true;
-                      System.out.println("Solo se permiten numeros: ");
+                      throw new EntradaInvalidaExcepcion("Solo numeros");
                  }
-                
+                 }catch(EntradaInvalidaExcepcion e){
+                     System.out.println(e.getMessage());
+                      letra = true;
+                 }
                 for(productos no: c.prod){//*compara lo que esta en la lista
                     if (no.id ==id){   //* si el id es el mismo al de la lista entonces              
                         existe = true;   
@@ -86,53 +95,66 @@ public class catalogotienda {
                 } while (existe || letra);//*si no esta en la lista puede continuar
                   System.out.println("\n--- Registra un nuevo producto ---");
 
-                   boolean numero;
-                   String producto; //*para que quede guardado fuera lo que se ingrese 
+                   boolean numero = false;
+                   String producto = null; //*para que quede guardado fuera lo que se ingrese 
                    //*y poder usarlo mas adelante
                     
                   do {
+                      try{
                       numero = false;//* verificar que el ussuario si escriba texto y no numeros
                       System.out.println("Ingrese el producto: ");
                        producto = P.nextLine();
 
                      if(producto.matches("[0-9]+")){
-                       numero = true;//* si si tiene numeros entonces repetira
-                      System.out.println("Solo se permite texto");
+                       throw new EntradaInvalidaExcepcionLetra("Solo palabras");
                          }
+                      }catch(EntradaInvalidaExcepcionLetra e){
+                          System.out.println(e.getMessage());
+                      }
                      
                    }while(numero); //*sigue
                   
-                  boolean letrados;
+                  boolean letrados = false;
                   double precio = 0;
                   
                   do{
+                      try{
                   System.out.println("Ingrese el precio: ");
                   String precios = P.nextLine();
                   
                   if(precios.matches("[0-9]+")) {
+                      
                      precio = Integer.parseInt(precios);
                      letrados = false;
+                  }else{
+                      throw new EntradaInvalidaExcepcion("solo numeros");
+                  }
+                  
+                 }catch(EntradaInvalidaExcepcion e){
+                      System.out.println(e.getMessage());
                      
-                 }else{
-                      letrados = true;
-                      System.out.println("Solo se permiten numeros: ");
                  }
                   }while(letrados);
                   
-                  boolean letratres;
+                  boolean letratres = false;
                   int cantidad = 0;
                   
                   do{
+                      try{
                   System.out.println("Ingrese la cantidad: ");
                   String cantidadd = P.nextLine();
                   
                    if(cantidadd.matches("[0-9]+")) {
+                      
                      cantidad = Integer.parseInt(cantidadd);
                      letratres = false;
-                     
-                 }else{
-                      letratres = true;
-                      System.out.println("Solo se permiten numeros: ");
+                   }else{
+                      throw new EntradaInvalidaExcepcion("Solo numeros");
+                   
+                   }
+                 }catch(EntradaInvalidaExcepcion e){
+                      System.out.println(e.getMessage());
+                       
                  }
                   }while(letratres);
                   
@@ -162,6 +184,7 @@ public class catalogotienda {
                   c.prod.add(nuevo);//* para que se agregue a la lista
                   System.out.println("producto ingresado exitosamente");    
                   break;
+
      
             case 2:
                 //* imprime el inventario de la lista prod
@@ -174,6 +197,6 @@ public class catalogotienda {
                 System.out.println("Opcion invalida");              
         }
         
-        }while(opcion != 3); //*sale y vuelve al menu principal
+        }while(opcion != 3); //*sale y vuelve al menu principal  
     }     
 }
