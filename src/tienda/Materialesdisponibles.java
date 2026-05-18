@@ -13,6 +13,7 @@ public class Materialesdisponibles extends regisservicio{
 
             Iterator<productos> iterador = prod.iterator();
             while (iterador.hasNext()) {
+                
                 productos material = iterador.next();
                 System.out.println("Nombre: " + material.getProducto()
                         + " | Cantidad: " + material.getCantidad()

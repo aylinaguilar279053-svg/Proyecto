@@ -6,6 +6,7 @@ private String producto;
 private double precio;
 private int cantidad;
 private Categoria categoria;
+public String material;
 
 public enum Categoria {
     HOGAR, TECNOLOGIA, LIMPIEZA, ALIMENTOS

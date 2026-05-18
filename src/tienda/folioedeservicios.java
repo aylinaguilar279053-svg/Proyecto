@@ -14,13 +14,15 @@ public class folioedeservicios{
     private String fecha;
     private int productoid;
     private String detalle;
+    public String materiales;
 
-    public folioedeservicios(int folio, String tipo, String fecha, int productoid, String detalle) {
+    public folioedeservicios(int folio, String tipo, String fecha, int productoid, String detalle, String materiales) {
         this.folio = folio;
         this.tipo = tipo;
         this.fecha = fecha;
         this.productoid = productoid;
         this.detalle = detalle;
+        this.materiales = materiales;
     }
 
     public int getFolio() {
@@ -63,14 +65,23 @@ public class folioedeservicios{
         this.detalle = detalle;
     }
 
+    public String getMateriales() {
+        return materiales;
+    }
+
+    public void setMateriales(String materiales) {
+        this.materiales = materiales;
+    }
+
     @Override
     public int hashCode() {
-        int hash = 5;
-        hash = 37 * hash + this.folio;
-        hash = 37 * hash + Objects.hashCode(this.tipo);
-        hash = 37 * hash + Objects.hashCode(this.fecha);
-        hash = 37 * hash + this.productoid;
-        hash = 37 * hash + Objects.hashCode(this.detalle);
+        int hash = 7;
+        hash = 61 * hash + this.folio;
+        hash = 61 * hash + Objects.hashCode(this.tipo);
+        hash = 61 * hash + Objects.hashCode(this.fecha);
+        hash = 61 * hash + this.productoid;
+        hash = 61 * hash + Objects.hashCode(this.detalle);
+        hash = 61 * hash + Objects.hashCode(this.materiales);
         return hash;
     }
 
@@ -98,12 +109,15 @@ public class folioedeservicios{
         if (!Objects.equals(this.fecha, other.fecha)) {
             return false;
         }
-        return Objects.equals(this.detalle, other.detalle);
+        if (!Objects.equals(this.detalle, other.detalle)) {
+            return false;
+        }
+        return Objects.equals(this.materiales, other.materiales);
     }
 
     @Override
     public String toString() {
-        return "folio " + folio + " tipo " + tipo + " fecha " + fecha + " productoid " + productoid + " detalle " + detalle;
+        return "folioedeservicios" + "folio " + folio + "tipo " + tipo + "fecha " + fecha + "producto " + productoid + "detalle " + detalle + "materiales " + materiales;
     }
 
 }
