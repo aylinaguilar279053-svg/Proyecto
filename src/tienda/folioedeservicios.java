@@ -16,7 +16,7 @@ public class folioedeservicios{
     private String detalle;
     public String materiales;
 
-    public folioedeservicios(int folio, String tipo, String fecha, int productoid, String detalle, String materiales) {
+    public folioedeservicios(int folio, String tipo, String fecha, int productoid, String detalle) {
         this.folio = folio;
         this.tipo = tipo;
         this.fecha = fecha;
