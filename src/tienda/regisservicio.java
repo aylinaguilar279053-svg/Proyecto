@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
-public class regisservicio {
+public class regisservicio{
 
     public static final List<folioedeservicios> serviciosRegistrados = new ArrayList<>();
 
@@ -193,6 +193,7 @@ public class regisservicio {
     detalle.put("area", area);
     detalle.put("encargado", encargado);
     detalle.put("materiales", listaMateriales);
+   
     
     Map<String, Object> datosServicio = new HashMap<>();
     datosServicio.put("tipo", "limpieza");
@@ -201,6 +202,18 @@ public class regisservicio {
     datosServicio.put("detalle", detalle);
     servicios_dict.put(folio, datosServicio);
 
+    for (Map.Entry<String, Map<String, Object>> entry : servicios_dict.entrySet()) {
+
+    folio = entry.getKey();
+    Map<String, Object> datos = entry.getValue();
+
+    String tipo = (String) datos.get("tipo");
+
+    if ("limpieza".equals(tipo)) {
+        System.out.println("Folio de limpieza: " + folio);
+    }
+}
+    
     System.out.println("\nLimpieza registrada.");
     imprimir_folio(folio); 
 }
@@ -341,5 +354,25 @@ public class regisservicio {
         System.out.println("DETALLES: " + d.get("detalle"));
         System.out.println("--------------------------------------------------\n");
     }
-    
+    public static void mostrarFoliosLimpieza() {
+
+    for (Map.Entry<String, Map<String, Object>> entry : servicios_dict.entrySet()) {
+
+        String folio = entry.getKey();
+        Map<String, Object> datos = entry.getValue();
+
+        if ("limpieza".equals(datos.get("tipo"))) {
+
+            Map<String, Object> detalle =
+                    (Map<String, Object>) datos.get("detalle");
+
+            List<String> materiales =
+                    (List<String>) detalle.get("materiales");
+
+            System.out.println("Folio: " + folio);
+            System.out.println("Materiales: " + String.join(", ", materiales));
+            System.out.println("----------------------");
+        }
+    }
+}
     }
