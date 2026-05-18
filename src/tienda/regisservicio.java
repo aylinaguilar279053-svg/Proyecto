@@ -68,6 +68,9 @@ public class regisservicio {
       }while(letra);
       
             switch (opcion) {
+                case 0:
+                    System.out.println("Saliendo...");
+                    break;
             case 1: rab(); break;
             case 2: merma(); break;
             case 3: limpieza(); break;
