@@ -288,7 +288,7 @@ public class regisservicio{
     System.out.print("Fecha del cambio: ");
     String fecha = leer.nextLine();
     
-    System.out.print("Tipo de cambio (promoción/aumento/descuento): ");
+    System.out.print("Tipo de cambio (promocion/aumento/descuento): ");
     String tipo = leer.nextLine().toLowerCase();
 
     double precio_anterior = p.getPrecio();
